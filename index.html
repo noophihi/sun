@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 제이메디 카달로그</title>
-    <!-- 오픈그래프(OG) 메타 태그: 링크 공유 시 명함 이미지가 미리보기로 노출되도록 설정 -->
+    <!-- 오픈그래프(OG) 메타 태그: 절대 경로를 사용하여 링크 공유 시 미리보기 이미지 표시 -->
     <meta property="og:title" content="2026 제이메디 카달로그">
     <meta property="og:description" content="제이메디 모바일 카달로그 및 책자 링크 안내입니다.">
-    <meta property="og:image" content="business-card.png">
+    <meta property="og:image" content="https://noophihi.github.io/sun/business-card.png">
     
     <style>
         * {
@@ -188,7 +188,7 @@
         <!-- 명함 카드 UI 영역 -->
         <div class="card-box">
             <div class="card-image-wrap">
-                <!-- 명함 이미지 파일명 (business-card.png) -->
+                <!-- 웹사이트 내부에 표시될 명함 이미지 (상대 경로 또는 절대 경로) -->
                 <img src="business-card.png" alt="이선영 약사 명함">
             </div>
             <div class="card-info">
@@ -208,9 +208,9 @@
 
         <!-- 제품별 카테고리 필터 버튼 -->
         <div class="filter-buttons">
-            <button class="filter-btn active" onclick="filterCatalog('all')">전체 보기</button>
-            <button class="filter-btn" onclick="filterCatalog('catalog1')">제이메디 책자</button>
-            <button class="filter-btn" onclick="filterCatalog('catalog2')">역매품 책자</button>
+            <button class="filter-btn active" onclick="filterCatalog('all', event)">전체 보기</button>
+            <button class="filter-btn" onclick="filterCatalog('catalog1', event)">제이메디 책자</button>
+            <button class="filter-btn" onclick="filterCatalog('catalog2', event)">역매품 책자</button>
         </div>
 
         <!-- 카달로그 링크 버튼 목록 -->
@@ -248,7 +248,7 @@
 
     <script>
         // 카테고리 필터링 기능 스크립트
-        function filterCatalog(type) {
+        function filterCatalog(type, event) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
