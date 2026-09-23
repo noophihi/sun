@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 제이메디 카달로그</title>
-    <!-- 오픈그래프(OG) 메타 태그: 링크 공유 시 명함 이미지가 미리보기로 노출되도록 설정 -->
+    <!-- 오픈그래프(OG) 메타 태그: 공유 시 미리보기 배너 이미지만 business-card.png로 설정 -->
     <meta property="og:title" content="2026 제이메디 카달로그">
-    <meta property="og:description" content="제이메디 모바일 카달로그 및 책자 링크 안내입니다.">
-    <meta property="og:image" content="business-card.png">
+    <meta property="og:description" content="모바일 책자를 보시려면 링크를 클릭해주세요.">
+    <meta property="og:image" content="https://noophihi.github.io/sun/business-card.png">
     
     <style>
         * {
@@ -17,7 +17,7 @@
         }
         body {
             font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-            background-color: #f4f6f8;
+            background-color: #f7f9fc;
             color: #333;
             display: flex;
             justify-content: center;
@@ -27,100 +27,100 @@
         }
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 450px;
             background: #ffffff;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            padding: 24px;
+            padding: 30px 24px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
         /* 명함 카드 영역 */
         .card-box {
             background: #ffffff;
-            border: 1px solid #e1e4e8;
+            border: 1px solid #e2e8f0;
             border-radius: 14px;
             padding: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             display: flex;
-            flex-direction: column;
-            gap: 14px;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
-        .card-image-wrap {
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #eee;
+        .card-logo {
+            width: 100px;
+            flex-shrink: 0;
         }
-        .card-image-wrap img {
+        .card-logo img {
             width: 100%;
             height: auto;
             display: block;
         }
+        .card-divider {
+            width: 1px;
+            height: 80px;
+            background-color: #cbd5e1;
+        }
         .card-info {
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            font-size: 13px;
-            color: #444;
-            border-left: 3px solid #0056b3;
-            padding-left: 10px;
-        }
-        .card-info .title-pos {
-            font-size: 11px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            gap: 3px;
+            font-size: 12px;
+            color: #475569;
         }
         .card-info .name {
             font-size: 16px;
             font-weight: 700;
-            color: #111;
+            color: #0f172a;
             margin-bottom: 2px;
         }
         
         /* 헤더 섹션 */
         .header-section {
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
         h1 {
             font-size: 20px;
             font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 6px;
+            color: #0f172a;
         }
         p {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.4;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+        .main-link {
+            font-size: 14px;
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 600;
+            word-break: break-all;
         }
 
         /* 카테고리 필터 버튼 영역 */
         .filter-buttons {
             display: flex;
             gap: 8px;
-            justify-content: center;
         }
         .filter-btn {
             flex: 1;
             padding: 10px 0;
-            border: 1px solid #ddd;
-            background: #fff;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
-            color: #555;
+            color: #475569;
             cursor: pointer;
             transition: all 0.2s;
         }
         .filter-btn.active {
-            background: #0056b3;
+            background: #0f172a;
             color: #fff;
-            border-color: #0056b3;
+            border-color: #0f172a;
         }
 
         /* 카달로그 링크 버튼 영역 */
@@ -134,39 +134,39 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 18px;
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             text-decoration: none;
-            color: #333;
+            color: #1e293b;
             font-weight: 600;
             font-size: 14px;
-            transition: background 0.2s, transform 0.1s;
+            transition: background 0.2s;
         }
         .catalog-btn:hover {
-            background: #e9ecef;
+            background: #f1f5f9;
         }
         .catalog-btn span {
-            color: #0056b3;
+            color: #2563eb;
             font-size: 12px;
         }
 
-        /* 맥 UI 스타일 하단 폴더 (SNS 채널) */
+        /* 맥 UI 스타일 하단 SNS 폴더 영역 */
         .mac-folder {
-            background: #e4e7eb;
-            border-radius: 12px;
+            background: #e2e8f0;
+            border-radius: 14px;
             padding: 12px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 4px;
         }
         .sns-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #333;
+            color: #334155;
             font-size: 11px;
             gap: 4px;
             transition: transform 0.2s;
@@ -185,42 +185,43 @@
 <body>
 
     <div class="container">
-        <!-- 명함 카드 UI 영역 -->
+        <!-- 명함 카드 UI (원래 코드 그대로 유지) -->
         <div class="card-box">
-            <div class="card-image-wrap">
-                <!-- 명함 이미지 파일명 (business-card.png) -->
-                <img src="business-card.png" alt="이선영 약사 명함">
+            <div class="card-logo">
+                <img src="logo.png" alt="제이메디 로고">
             </div>
+            <div class="card-divider"></div>
             <div class="card-info">
-                <span class="title-pos">Pharmacist</span>
-                <span class="name">Lee Sun young (이선영)</span>
-                <div><strong>Mobile:</strong> 010-6596-0067</div>
-                <div><strong>Mail:</strong> jmedi6119@naver.com</div>
-                <div><strong>Address:</strong> 1F, JMedi, 839 Nakdong-daero, Sasang-gu, Busan, South Korea</div>
+                <span class="name">김휘린</span>
+                <div>Mobile | 010-5909-8573</div>
+                <div>E-mail | greencomma77@naver.com</div>
+                <div>Site | greencommagift.com</div>
+                <div>Address | 부산 사상구 낙동대로839, 1층</div>
             </div>
         </div>
 
-        <!-- 안내 타이틀 -->
+        <!-- 안내 타이틀 및 링크 -->
         <div class="header-section">
             <h1>2026 제이메디 카달로그</h1>
-            <p>원하시는 모바일 책자를 선택해 주세요.</p>
+            <p>모바일 책자를 보시려면 링크를 클릭해 주세요.</p>
+            <a href="https://noophihi.github.io" class="main-link" target="_blank">noophihi.github.io</a>
         </div>
 
         <!-- 제품별 카테고리 필터 버튼 -->
         <div class="filter-buttons">
-            <button class="filter-btn active" onclick="filterCatalog('all')">전체 보기</button>
-            <button class="filter-btn" onclick="filterCatalog('catalog1')">제이메디 책자</button>
-            <button class="filter-btn" onclick="filterCatalog('catalog2')">역매품 책자</button>
+            <button class="filter-btn active" onclick="filterCatalog('all', event)">전체 보기</button>
+            <button class="filter-btn" onclick="filterCatalog('catalog1', event)">제이메디 책자</button>
+            <button class="filter-btn" onclick="filterCatalog('catalog2', event)">역매품 책자</button>
         </div>
 
         <!-- 카달로그 링크 버튼 목록 -->
         <div class="catalog-links">
             <a href="catalog1.pdf" class="catalog-btn item-catalog1" target="_blank">
-                <div>2026 제이메디 통합 카달로그</div>
+                <div>2026 제이메디 책자</div>
                 <span>PDF 보기 &rarr;</span>
             </a>
             <a href="catalog2.pdf" class="catalog-btn item-catalog2" target="_blank">
-                <div>2026 역매품 전용 책자</div>
+                <div>2026 역매품 책자</div>
                 <span>PDF 보기 &rarr;</span>
             </a>
         </div>
@@ -248,7 +249,7 @@
 
     <script>
         // 카테고리 필터링 기능 스크립트
-        function filterCatalog(type) {
+        function filterCatalog(type, event) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
