@@ -3,271 +3,955 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 제이메디 카달로그</title>
-    <!-- 오픈그래프(OG) 메타 태그: 공유 시 미리보기 배너 이미지만 business-card.png로 설정 -->
-    <meta property="og:title" content="2026 제이메디 카달로그">
-    <meta property="og:description" content="모바일 책자를 보시려면 링크를 클릭해주세요.">
-    <meta property="og:image" content="https://noophihi.github.io/sun/business-card.png">
+    <title>제이메디 모바일 책자</title>
+    
+   <!-- 오픈 그래프 (OG) 태그: 카톡 공유시 보이는 정보 -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://noophihi.github.io/jmedi/">
+    <meta property="og:title" content="제이메디 모바일 책자">
+    <meta property="og:description" content="제이메디 2026 모바일 카탈로그 및 제품 안내">
+    <!-- 여기에 배너 이미지 경로를 지정해주시면 됩니다 -->
+    <meta property="og:image" content="https://noophihi.github.io/jmedi/business-card.png">
+
+    <!-- 웹폰트 (Jua, Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
         body {
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-            background-color: #f7f9fc;
-            color: #333;
+            background-color: #c0dbf4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px 0 60px 0;
+            font-family: 'Jua', 'Noto Sans KR', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .wave-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 1. 상단 로고 & QR */
+        .top-header-area {
+            position: relative;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            margin-bottom: 14px;
         }
-        .container {
-            width: 100%;
-            max-width: 450px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            padding: 30px 24px;
+
+        .logo-circle {
+            width: 85px;
+            height: 85px;
+            background-color: #ffffff;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        /* 명함 카드 영역 */
-        .card-box {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 16px;
-            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+            padding: 8px;
         }
-        .card-logo {
-            width: 100px;
-            flex-shrink: 0;
-        }
-        .card-logo img {
+
+        .logo-img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: contain;
             display: block;
         }
-        .card-divider {
-            width: 1px;
-            height: 80px;
-            background-color: #cbd5e1;
-        }
-        .card-info {
+
+        .top-qr-box {
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            font-size: 12px;
-            color: #475569;
+            align-items: center;
+            justify-content: center;
         }
-        .card-info .name {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0f172a;
+
+        .top-qr-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .top-qr-label {
+            font-family: 'Jua', sans-serif;
+            font-size: 0.55rem;
+            color: #0b4b8a;
+            margin-top: 3px;
+        }
+
+        /* 2. 상단 헤더 문구 */
+        .header-title {
+            font-family: 'Jua', sans-serif;
+            font-size: 1.65rem;
+            color: #0b4b8a;
             margin-bottom: 2px;
-        }
-        
-        /* 헤더 섹션 */
-        .header-section {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        h1 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        p {
-            font-size: 14px;
-            color: #64748b;
-            line-height: 1.5;
-        }
-        .main-link {
-            font-size: 14px;
-            color: #2563eb;
-            text-decoration: underline;
-            font-weight: 600;
-            word-break: break-all;
+            text-align: center;
+            letter-spacing: -0.5px;
         }
 
-        /* 카테고리 필터 버튼 영역 */
-        .filter-buttons {
-            display: flex;
-            gap: 8px;
-        }
-        .filter-btn {
-            flex: 1;
-            padding: 10px 0;
-            border: 1px solid #e2e8f0;
-            background: #f8fafc;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #475569;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .filter-btn.active {
-            background: #0f172a;
-            color: #fff;
-            border-color: #0f172a;
+        .header-sub {
+            font-family: 'Jua', sans-serif;
+            font-size: 0.85rem;
+            color: #5d92c0;
+            margin-bottom: 22px;
+            text-align: center;
+            letter-spacing: -0.3px;
         }
 
-        /* 카달로그 링크 버튼 영역 */
-        .catalog-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        /* 3. 흰색 카드 공통 섹션 */
+        .card-section {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 22px;
+            padding: 20px 16px 16px 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
-        .catalog-btn {
+
+        .badge-header {
             display: flex;
             align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .badge-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background-color: #a8d7fb;
+            z-index: 1;
+        }
+
+        .badge-title {
+            position: relative;
+            z-index: 2;
+            background: #2aa3fb;
+            color: #ffffff;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.25rem;
+            padding: 3px 20px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 6px rgba(42, 163, 251, 0.25);
+        }
+
+        /* 4. 카탈로그 영역 */
+        .catalog-grid {
+            display: flex;
             justify-content: space-between;
-            padding: 14px 18px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-        .catalog-btn:hover {
-            background: #f1f5f9;
-        }
-        .catalog-btn span {
-            color: #2563eb;
-            font-size: 12px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
-        /* 맥 UI 스타일 하단 SNS 폴더 영역 */
-        .mac-folder {
-            background: #e2e8f0;
-            border-radius: 14px;
-            padding: 12px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 4px;
-        }
-        .sns-icon {
+        .catalog-item {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #334155;
-            font-size: 11px;
-            gap: 4px;
-            transition: transform 0.2s;
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
-        .sns-icon:hover {
+
+        .catalog-item:hover {
             transform: translateY(-3px);
         }
-        .sns-icon img {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+
+        .book-cover-img {
+            width: 100%;
+            aspect-ratio: 1 / 1.35;
             object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            border: 1px solid #c9e3f5;
+        }
+
+        .book-title {
+            margin-top: 12px;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.1rem;
+            color: #0b417a;
+            text-align: center;
+            letter-spacing: -0.3px;
+        }
+
+        .catalog-footer-note {
+            text-align: center;
+            font-family: 'Jua', sans-serif;
+            font-size: 0.78rem;
+            color: #999999;
+            margin-top: 6px;
+        }
+
+        /* 5. 홈페이지 링크 */
+        .link-item {
+            text-decoration: none;
+            display: block;
+            padding: 6px 4px;
+        }
+
+        .link-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text-group .item-title {
+            font-family: 'Jua', sans-serif;
+            font-size: 1.15rem;
+            color: #555555;
+        }
+
+        .text-group .item-sub {
+            font-family: 'Jua', sans-serif;
+            font-size: 0.78rem;
+            color: #bbbbbb;
+            letter-spacing: 0.3px;
+        }
+
+        .click-btn-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-box {
+            background-color: #38a8fd;
+            color: white;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.15rem;
+            padding: 6px 12px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(56, 168, 253, 0.25);
+        }
+
+        .btn-box.dark {
+            background-color: #88beee;
+        }
+
+        .hp-divider {
+            height: 1px;
+            background-color: #eef5fa;
+            margin: 10px 0;
+        }
+
+        /* 6. 카테고리 영역 */
+        .category-section {
+            width: 100%;
+            margin-top: 4px;
+            margin-bottom: 18px;
+        }
+
+        .category-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .category-scroll::-webkit-scrollbar-track {
+            background: #e2f0fc;
+            border-radius: 10px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb {
+            background: #8ec5fc;
+            border-radius: 10px;
+        }
+
+        .cat-chip {
+            white-space: nowrap;
+            background-color: #ffffff;
+            color: #0b4b8a;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-family: 'Jua', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            flex-shrink: 0;
+        }
+
+        .cat-chip.active {
+            background-color: #2aa3fb;
+            color: #ffffff;
+            box-shadow: 0 3px 8px rgba(42, 163, 251, 0.35);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 18px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .product-card.hide {
+            display: none;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 110px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            background-color: #f2f7fc;
+            display: block;
+        }
+
+        .product-title {
+            font-family: 'Jua', sans-serif;
+            font-size: 1rem;
+            color: #333333;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .product-desc {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.75rem;
+            color: #888888;
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+
+        /* ================= 7. 하단 브라우저 창 ================= */
+        .browser-window {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-top: 10px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .browser-header {
+            background-color: #ffffff;
+            padding: 16px 20px 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .browser-body {
+            padding: 4px 12px 24px 12px;
+        }
+
+        .browser-profile-box {
+            background-color: #cbebff;
+            border-radius: 0;
+            padding: 14px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .browser-profile-box::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -6px;
+            width: 12px;
+            height: 12px;
+            background-color: #1a9be2;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .left-guide-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #1a9be2;
+        }
+
+        .browser-profile-box::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            bottom: -6px;
+            width: 12px;
+            height: 12px;
+            background-color: #1a9be2;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .right-guide-line {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #1a9be2;
+        }
+
+        .browser-profile-logo {
+            width: 70px;
+            height: 70px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .browser-profile-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .browser-profile-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .browser-handle {
+            font-family: 'Jua', sans-serif;
+            font-size: 1.35rem;
+            color: #111111;
+            margin-bottom: 2px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .browser-desc {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: #222222;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: keep-all;
+            letter-spacing: -0.4px;
+        }
+
+        .browser-follow-btn {
+            background-color: #1a9be2;
+            color: #ffffff;
+            font-family: 'Jua', sans-serif;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 10px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(26, 155, 226, 0.2);
+        }
+
+        .browser-zip-title-area {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .browser-zip-title {
+            font-family: 'Jua', sans-serif;
+            font-size: 1.35rem;
+            color: #000000;
+            background-color: #d8f1ff;
+            padding: 2px 10px;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .star-decor-1 {
+            position: absolute;
+            right: 18%;
+            top: -12px;
+            color: #0f98ec;
+            font-size: 1.1rem;
+        }
+
+        .star-decor-2 {
+            position: absolute;
+            right: 22%;
+            bottom: -14px;
+            color: #a3e2ff;
+            font-size: 0.85rem;
+        }
+
+        /* 1행 4열 폴더 그리드 */
+        .browser-folder-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .browser-folder-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .browser-folder-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .folder-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 75px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .folder-svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+        }
+
+        .cursor-icon {
+            position: absolute;
+            right: 0px;
+            bottom: -6px;
+            width: 22px;
+            height: 22px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.25));
+            pointer-events: none;
+        }
+
+        /* 폴더 하단 글씨 (크기: 0.78rem, 색상: 원래 색상 #0b417a) */
+        .browser-folder-label {
+            font-family: 'Jua', sans-serif;
+            font-size: 0.78rem;
+            color: #0b417a;
+            margin-top: 6px;
+            text-align: center;
+            letter-spacing: -0.3px;
+            line-height: 1.15;
+            word-break: keep-all;
         }
     </style>
 </head>
 <body>
 
+    <svg class="wave-bg" viewBox="0 0 500 150" preserveAspectRatio="none">
+        <path d="M0,100 C150,150 200,80 350,110 C420,125 470,100 500,90 L500,150 L0,150 Z" fill="#d3e9f9"></path>
+        <path d="M0,120 C180,90 300,140 500,100 L500,150 L0,150 Z" fill="#71bdf2" opacity="0.8"></path>
+    </svg>
+
     <div class="container">
-        <!-- 명함 카드 UI (원래 코드 그대로 유지) -->
-        <div class="card-box">
-            <div class="card-logo">
-                <img src="logo.png" alt="제이메디 로고">
+        <!-- 상단 헤더 영역 -->
+        <div class="top-header-area">
+            <div class="logo-circle">
+                <img src="jmedi_image/logo.png" alt="제이메디 로고" class="logo-img">
             </div>
-            <div class="card-divider"></div>
-            <div class="card-info">
-                <span class="name">김휘린</span>
-                <div>Mobile | 010-5909-8573</div>
-                <div>E-mail | greencomma77@naver.com</div>
-                <div>Site | greencommagift.com</div>
-                <div>Address | 부산 사상구 낙동대로839, 1층</div>
+
+            <div class="top-qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://noophihi.github.io/jmedi/" alt="jmedi QR코드" class="top-qr-img">
+                <span class="top-qr-label">스캔/공유</span>
             </div>
         </div>
 
-        <!-- 안내 타이틀 및 링크 -->
-        <div class="header-section">
-            <h1>2026 제이메디 카달로그</h1>
-            <p>모바일 책자를 보시려면 링크를 클릭해 주세요.</p>
-            <a href="https://noophihi.github.io" class="main-link" target="_blank">noophihi.github.io</a>
+        <!-- 헤더 문구 -->
+        <h1 class="header-title">모바일 책자 바로가기</h1>
+        <p class="header-sub">[모바일 책자를 보시려면 아래의 사진을 클릭해주세요!]</p>
+
+        <!-- CATALOG 섹션 -->
+        <div class="card-section">
+            <div class="badge-header">
+                <span class="badge-title">2026 CATALOG</span>
+            </div>
+
+            <div class="catalog-grid">
+                <a href="catalog1.pdf" target="_blank" class="catalog-item">
+                    <img src="jmedi_image/catalog.png" alt="2026 제이메디 책자 표지" class="book-cover-img">
+                    <div class="book-title">2026 제이메디 책자</div>
+                </a>
+
+                <a href="catalog2.pdf" target="_blank" class="catalog-item">
+                    <img src="jmedi_image/catalog2.png" alt="역매품 책자 표지" class="book-cover-img">
+                    <div class="book-title">역매품 책자</div>
+                </a>
+            </div>
+
+            <p class="catalog-footer-note">[2026 제이메디 모바일 책자입니다!]</p>
         </div>
 
-        <!-- 제품별 카테고리 필터 버튼 -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" onclick="filterCatalog('all', event)">전체 보기</button>
-            <button class="filter-btn" onclick="filterCatalog('catalog1', event)">제이메디 책자</button>
-            <button class="filter-btn" onclick="filterCatalog('catalog2', event)">역매품 책자</button>
+        <!-- HOMEPAGE 섹션 -->
+        <div class="card-section">
+            <div class="badge-header">
+                <span class="badge-title">HOMEPAGE</span>
+            </div>
+
+            <a href="https://jmedi.kr" target="_blank" class="link-item">
+                <div class="link-content">
+                    <div class="text-group">
+                        <div class="item-title">제이메디</div>
+                        <div class="item-sub">제이메디 공식홈페이지</div>
+                    </div>
+                    <div class="click-btn-group">
+                        <div class="btn-box">클</div>
+                        <div class="btn-box dark">릭</div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="hp-divider"></div>
+
+            <a href="https://smartstore.naver.com/jhealth" target="_blank" class="link-item">
+                <div class="link-content">
+                    <div class="text-group">
+                        <div class="item-title">제이헬스</div>
+                        <div class="item-sub">건강기능식품 사이트</div>
+                    </div>
+                    <div class="click-btn-group">
+                        <div class="btn-box">클</div>
+                        <div class="btn-box dark">릭</div>
+                    </div>
+                </div>
+            </a>
         </div>
 
-        <!-- 카달로그 링크 버튼 목록 -->
-        <div class="catalog-links">
-            <a href="catalog1.pdf" class="catalog-btn item-catalog1" target="_blank">
-                <div>2026 제이메디 책자</div>
-                <span>PDF 보기 &rarr;</span>
-            </a>
-            <a href="catalog2.pdf" class="catalog-btn item-catalog2" target="_blank">
-                <div>2026 역매품 책자</div>
-                <span>PDF 보기 &rarr;</span>
-            </a>
+        <!-- 카테고리 필터 섹션 -->
+        <div class="category-section">
+            <div class="category-scroll">
+                <button class="cat-chip active" data-filter="gum">잇몸건강</button>
+                <button class="cat-chip" data-filter="eye">눈건강</button>
+                <button class="cat-chip" data-filter="probiotics">유산균</button>
+                <button class="cat-chip" data-filter="circulation">혈행개선</button>
+                <button class="cat-chip" data-filter="joint">관절건강</button>
+                <button class="cat-chip" data-filter="vitamin">영양제</button>
+                <button class="cat-chip" data-filter="yeast">효모제품</button>
+                <button class="cat-chip" data-filter="etc">기타</button>
+            </div>
+
+            <!-- 제품 카드 목록 -->
+            <div class="product-grid">
+                <!-- 잇몸건강 -->
+                <a href="https://naver.me/5p0C6qaA" target="_blank" class="product-card" data-category="gum">
+                    <img src="jmedi_image/이모스틴.png" alt="이모스틴" class="product-img">
+                    <div class="product-title">이모스틴</div>
+                    <div class="product-desc">60TX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/5t7zD4Be" target="_blank" class="product-card" data-category="gum">
+                    <img src="jmedi_image/알베로.jpg" alt="알베로 프리미엄 골드" class="product-img">
+                    <div class="product-title">알베로 프리미엄 골드</div>
+                    <div class="product-desc">60TX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/IMZvOZDk" target="_blank" class="product-card" data-category="gum">
+                    <img src="jmedi_image/슈퍼인사튼튼.jpg" alt="슈퍼인사튼 골드" class="product-img">
+                    <div class="product-title">슈퍼인사튼 골드</div>
+                    <div class="product-desc">60TX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/5RANSqfM" target="_blank" class="product-card" data-category="gum">
+                    <img src="jmedi_image/아보스틴케이.png" alt="아보스틴 케이" class="product-img">
+                    <div class="product-title">아보스틴 케이</div>
+                    <div class="product-desc">60TX2 (4개월)</div>
+                </a>
+
+                <!-- 눈건강 -->
+                <a href="https://naver.me/xbKPssoe" target="_blank" class="product-card" data-category="eye">
+                    <img src="jmedi_image/루테인파워플러스.jpg" alt="루테인 파워플러스" class="product-img">
+                    <div class="product-title">루테인 파워플러스</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/F6Q2LLf0" target="_blank" class="product-card" data-category="eye">
+                    <img src="jmedi_image/파워루테인킹.png" alt="파워 루테인킹" class="product-img">
+                    <div class="product-title">파워 루테인킹</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/xrzHln2Z" target="_blank" class="product-card" data-category="eye">
+                    <img src="jmedi_image/리얼골드.jpg" alt="리얼골드 루테인플러스" class="product-img">
+                    <div class="product-title">리얼골드 루테인플러스</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/Gzd0aLg6" target="_blank" class="product-card" data-category="eye">
+                    <img src="jmedi_image/코드리버.jpg" alt="슈퍼루테인 코드리버" class="product-img">
+                    <div class="product-title">슈퍼루테인 코드리버</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+
+                <!-- 유산균 -->
+                <a href="https://naver.me/IIDb6pb3" target="_blank" class="product-card" data-category="probiotics">
+                    <img src="jmedi_image/이너굿락토.jpg" alt="이너굿락토" class="product-img">
+                    <div class="product-title">이너굿락토</div>
+                    <div class="product-desc">30CX2 (2개월)</div>
+                </a>
+
+                <a href="https://naver.me/xLNY6wPh" target="_blank" class="product-card" data-category="probiotics">
+                    <img src="jmedi_image/듀오락토킹.jpg" alt="마이크로바이옴 듀오락토킹" class="product-img">
+                    <div class="product-title">마이크로바이옴 듀오락토킹</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/xnOH2Vww" target="_blank" class="product-card" data-category="probiotics">
+                    <img src="jmedi_image/피비탑.jpg" alt="마이크로바이옴 피비탑골드" class="product-img">
+                    <div class="product-title">마이크로바이옴 피비탑골드</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+
+                <a href="https://naver.me/FQupq8Lb" target="_blank" class="product-card" data-category="probiotics">
+                    <img src="jmedi_image/당케어.jpg" alt="당케어&락토피스5.0" class="product-img">
+                    <div class="product-title">당케어&락토피스5.0</div>
+                    <div class="product-desc">60CX2 (4개월)</div>
+                </a>
+            </div>
         </div>
 
-        <!-- 맥 UI 스타일 하단 SNS 폴더 영역 -->
-        <div class="mac-folder">
-            <a href="https://youtube.com" class="sns-icon" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-                <span>YouTube</span>
-            </a>
-            <a href="https://facebook.com" class="sns-icon" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook">
-                <span>Facebook</span>
-            </a>
-            <a href="https://instagram.com" class="sns-icon" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
-                <span>Instagram</span>
-            </a>
-            <a href="https://tiktok.com" class="sns-icon" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-                <span>TikTok</span>
-            </a>
+        <!-- ================= 7. 하단 브라우저 창 ================= -->
+        <div class="browser-window">
+            <div class="browser-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+
+            <div class="browser-body">
+                <!-- 프로필 상자 -->
+                <div class="browser-profile-box">
+                    <div class="left-guide-line"></div>
+                    <div class="right-guide-line"></div>
+
+                    <div class="browser-profile-logo">
+                        <img src="jmedi_image/logo.png" alt="제이메디 로고">
+                    </div>
+                    <div class="browser-profile-info">
+                        <div class="browser-handle">@jmedi</div>
+                        <div class="browser-desc">제이메디의 채널을 바로가시려면 클릭해주세요</div>
+                        <a href="https://jmedi.kr" target="_blank" class="browser-follow-btn">팔로우</a>
+                    </div>
+                </div>
+
+                <!-- 타이틀 -->
+                <div class="browser-zip-title-area">
+                    <span class="browser-zip-title">제이메디 채널.zip</span>
+                    <span class="star-decor-1">★</span>
+                    <span class="star-decor-2">★</span>
+                </div>
+
+                <!-- 하단 폴더 그리드 -->
+                <div class="browser-folder-grid">
+                    
+                    <!-- 1. 유튜브 바로가기 -->
+                    <a href="https://youtube.com/channel/UCE4ZVsQDg2Ao-8qmQ_4iuLA?si=seRCkOh9GiysjCT8" target="_blank" class="browser-folder-item">
+                        <div class="folder-wrapper">
+                            <svg class="folder-svg" viewBox="0 0 100 80">
+                                <defs>
+                                    <linearGradient id="folderGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#4ea3e3"/>
+                                        <stop offset="100%" stop-color="#3b8dcb"/>
+                                    </linearGradient>
+                                    <linearGradient id="folderFront1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#a1d5fa"/>
+                                        <stop offset="100%" stop-color="#71bbf4"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M5,15 C5,10 10,8 15,8 L35,8 C40,8 43,12 47,15 L52,18 L90,18 C95,18 98,21 98,26 L98,70 C98,75 95,78 90,78 L10,78 C5,78 2,75 2,70 L2,20 Z" fill="url(#folderGrad1)"/>
+                                <rect x="2" y="24" width="96" height="52" rx="8" fill="url(#folderFront1)"/>
+                            </svg>
+                            <svg class="cursor-icon" viewBox="0 0 40 40">
+                                <path d="M7 2 L26 21 L16 21 L22 34 L17 36 L11 23 L3 30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="browser-folder-label">유튜브<br>바로가기</span>
+                    </a>
+
+                    <!-- 2. 페이스북 바로가기 -->
+                    <a href="https://www.facebook.com/61577814425362/?http_ref=eyJ0cyI6MTc4OTAxMjEwOTAwMCwiciI6IiJ9" target="_blank" class="browser-folder-item">
+                        <div class="folder-wrapper">
+                            <svg class="folder-svg" viewBox="0 0 100 80">
+                                <defs>
+                                    <linearGradient id="folderGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#026bc2"/>
+                                        <stop offset="100%" stop-color="#015298"/>
+                                    </linearGradient>
+                                    <linearGradient id="folderFront2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#38adfd"/>
+                                        <stop offset="100%" stop-color="#0d8ae8"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M5,15 C5,10 10,8 15,8 L35,8 C40,8 43,12 47,15 L52,18 L90,18 C95,18 98,21 98,26 L98,70 C98,75 95,78 90,78 L10,78 C5,78 2,75 2,70 L2,20 Z" fill="url(#folderGrad2)"/>
+                                <rect x="2" y="24" width="96" height="52" rx="8" fill="url(#folderFront2)"/>
+                            </svg>
+                            <svg class="cursor-icon" viewBox="0 0 40 40">
+                                <path d="M7 2 L26 21 L16 21 L22 34 L17 36 L11 23 L3 30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="browser-folder-label">페이스북<br>바로가기</span>
+                    </a>
+
+                    <!-- 3. 인스타 바로가기 -->
+                    <a href="https://www.instagram.com/jmedi8115?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" class="browser-folder-item">
+                        <div class="folder-wrapper">
+                            <svg class="folder-svg" viewBox="0 0 100 80">
+                                <defs>
+                                    <linearGradient id="folderGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#51739c"/>
+                                        <stop offset="100%" stop-color="#3e5b7e"/>
+                                    </linearGradient>
+                                    <linearGradient id="folderFront3" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#92b3d8"/>
+                                        <stop offset="100%" stop-color="#7093be"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M5,15 C5,10 10,8 15,8 L35,8 C40,8 43,12 47,15 L52,18 L90,18 C95,18 98,21 98,26 L98,70 C98,75 95,78 90,78 L10,78 C5,78 2,75 2,70 L2,20 Z" fill="url(#folderGrad3)"/>
+                                <rect x="2" y="24" width="96" height="52" rx="8" fill="url(#folderFront3)"/>
+                            </svg>
+                            <svg class="cursor-icon" viewBox="0 0 40 40">
+                                <path d="M7 2 L26 21 L16 21 L22 34 L17 36 L11 23 L3 30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="browser-folder-label">인스타<br>바로가기</span>
+                    </a>
+
+                    <!-- 4. 틱톡 바로가기 -->
+                    <a href="https://www.tiktok.com/@jmedi6119?is_from_webapp=1&sender_device=pc" target="_blank" class="browser-folder-item">
+                        <div class="folder-wrapper">
+                            <svg class="folder-svg" viewBox="0 0 100 80">
+                                <defs>
+                                    <linearGradient id="folderGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#1b8ebd"/>
+                                        <stop offset="100%" stop-color="#146d92"/>
+                                    </linearGradient>
+                                    <linearGradient id="folderFront4" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#58cae8"/>
+                                        <stop offset="100%" stop-color="#2ba8cf"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M5,15 C5,10 10,8 15,8 L35,8 C40,8 43,12 47,15 L52,18 L90,18 C95,18 98,21 98,26 L98,70 C98,75 95,78 90,78 L10,78 C5,78 2,75 2,70 L2,20 Z" fill="url(#folderGrad4)"/>
+                                <rect x="2" y="24" width="96" height="52" rx="8" fill="url(#folderFront4)"/>
+                            </svg>
+                            <svg class="cursor-icon" viewBox="0 0 40 40">
+                                <path d="M7 2 L26 21 L16 21 L22 34 L17 36 L11 23 L3 30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="browser-folder-label">틱톡<br>바로가기</span>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- 카테고리 필터 스크립트 -->
     <script>
-        // 카테고리 필터링 기능 스크립트
-        function filterCatalog(type, event) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const chips = document.querySelectorAll('.cat-chip');
+            const products = document.querySelectorAll('.product-card');
 
-            const item1 = document.querySelector('.item-catalog1');
-            const item2 = document.querySelector('.item-catalog2');
-
-            if (type === 'all') {
-                item1.style.display = 'flex';
-                item2.style.display = 'flex';
-            } else if (type === 'catalog1') {
-                item1.style.display = 'flex';
-                item2.style.display = 'none';
-            } else if (type === 'catalog2') {
-                item1.style.display = 'none';
-                item2.style.display = 'flex';
+            function filterProducts(category) {
+                products.forEach(card => {
+                    if (card.getAttribute('data-category') === category) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
             }
-        }
+
+            // 초기 선택
+            filterProducts('gum');
+
+            chips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    chips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.getAttribute('data-filter');
+                    filterProducts(category);
+                });
+            });
+        });
     </script>
 </body>
 </html>
